@@ -1,0 +1,101 @@
+
+.containerRegister {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: #2E8B57;
+  }
+  .IntroductionRegister {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .IntroductionRegister::before {
+    content: "Gracias por formar parte del cambio";
+    position: absolute;
+    font-size: 50px;
+    width: 90%;
+    color: #fff;
+    font-family: "Poppins";
+  }
+  .IntroductionRegister img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .formLogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 50%;
+  }
+  .closeLogin{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+  }
+  .closeLogin:hover{
+      color: #f1f1f1
+  }
+  .contentFormLogin{
+      padding: 40px;
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+      border: 1px solid rgba(0, 0, 0, .2);
+  }
+  .formLogin h1{
+      color: #2E8B57;
+      font-family: 'inter';
+      text-align: center;
+      font-weight: 700;
+  }
+  .formLogin div{
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+  }
+  .formLogin div label{
+      font-family: 'Poppins';
+      color: #708090;
+  }
+  .formLogin div input{
+      padding: 7px 10px;
+      font-family: 'Inter';
+      font-size: 15px;
+      outline: none;
+      border: none;
+      background: #f1f1f1;
+      border-radius: 5px;
+  }
+  .formLogin span {
+      margin: 15px 0;
+      font-family: 'Inter';
+      font-size: 15px;
+  }
+  .formLogin a{
+      color: #2E8B57
+  }
+  .formLogin button{
+      background: #2E8B57;
+      padding: 5px;
+      font-family: 'Poppins';
+      color: #fff;
+      border-radius: 5px;
+      border: none;
+  }
+  .formLogin .infoRegister{
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
