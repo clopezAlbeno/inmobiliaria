@@ -1,0 +1,71 @@
+.rent-page-container {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    flex-direction: column;
+    /* Para evitar que el contenido quede debajo del navbar fijo */
+}
+
+.rent-page-header {
+    background-color: #e6f1f5;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.rent-page-header h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #546674;
+    margin: 0;
+}
+
+.rent-page-content {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    justify-content: center;
+    width: 80%;
+}
+
+.filters-sidebar {
+    flex: 0 0 250px;
+    background-color: #f7f7f7;
+    padding: 16px;
+    border-radius: 8px;
+    height: fit-content;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.filters-sidebar h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.filter-section {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.filter-section h4 {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+    margin: 0;
+}
+
+.properties-list {
+    flex-grow: 1;
+}
+
+.sort-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: #888;
+}
