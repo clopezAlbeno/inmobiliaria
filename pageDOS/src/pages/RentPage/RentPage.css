@@ -249,6 +249,90 @@
     animation: fadeIn 0.3s ease-in;
 }
 
+/* Estilos de paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #f0f0f0;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-btn.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-ellipsis {
+  padding: 8px 4px;
+  color: #666;
+}
+
+/* Mejoras al sort bar */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-bar span {
+  color: #666;
+  font-weight: 500;
+}
+
+/* Mejora responsive para paginación */
+@media (max-width: 768px) {
+  .pagination {
+    gap: 4px;
+  }
+  
+  .pagination-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .sort-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* Mejora visual para los inputs de filtro */
+.filter-input::placeholder {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Mejora visual para el header */
+.rent-page-header p {
+  color: #666;
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
