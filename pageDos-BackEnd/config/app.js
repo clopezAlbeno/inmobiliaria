@@ -8,6 +8,7 @@ const cors = require('cors');
 
 const usuarioRoutes = require('../src/user/user.routes');
 const formularioRoutes = require('../src/form/form.routes');
+const propiedadRoutes = require('../src//propiedad/propiedad.routes');
 
 const port = process.env.PORT || 3300;
 
@@ -21,6 +22,8 @@ app.use(morgan('dev'));
 // Rutas
 app.use('/usuarios', usuarioRoutes);
 app.use('/formularios', formularioRoutes);
+app.use('/api/propiedades', propiedadRoutes);
+
 
 exports.initServer = () => {
     app.listen(port, () => {
