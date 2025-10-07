@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "inmobiliariagt",
+  "private_key_id": "6e84f0d7d5f88bf793d2bf79e85aa33cf0fa568c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCovEjiRrW2w/Lr\n2qex/P+Lt5QYus/5UsodWQgwY8Pib0q1ixU4KhjGG2CkcCd/TVC7FcfypxZM5GKb\nLsxRtKwisei86x7I5f6G+hCy50hoagic/iTDIR3EgyMWcfYayXIpzJkgmmcY5JVE\ndhzB8rhQUswG5NI84q+cJ9Q0JFO2NJEIUg3u78tAWKRJE5hNS/6d+sKD7Owta/NM\ntCt4rQMtrRIXkiRHB8cHMcU7fIKGfm6P5hE1KcFBrJ16VVNtcaDR+d4NfqAVVEQL\nNCvWcPgXxvZTiNqdQ5SFW89QmAePEmEIjIIfe3yiXd9hv9G3OJQtNwPNyj5qpFtc\nj7wC//4hAgMBAAECggEAAgMhNS3/ZHZT2yTj2Cv9w5JuuvIq+qlwCed1QRetFWVB\neHneSMNU9JnZ4XDv9T68cXq23dzI8Vi0GO8qL+hBORAZLmJfnw9oS8vg72bYMEL7\nDTcJRH8MdJRuxbzNFBbMz66y5DAxl6enZKYqI7r4bTn+vy9MsL3jg7x3qKAgenBp\nldz20hJOfkB65Vej+yUcV90NGE25liB39mtRhLmKB8SD0ZTdnfbj1dKjCaZ6qrkc\nB4FGLNvkUVIUvfK4WcvoPYSX6ByvJVQyLV+gx3krr791g/A0IgOLB6YtWUu76hB9\nDjDgYQIUQE7dxp1h9QKlKZr5JK/g8fRaiNIZkKV+kQKBgQDSF/Bg2WxzAMqXxJEP\njt5nbogChvIfXTrpuq0kUcZkLZNooPGXXdl943kTK+M3TjBP+zGeRpQjXc4ogUNL\n6AkfCxUDFK4IeTi5iqQQDL1G6rf47k2g0LRN/bxNhVnCNnlu1zjaYQSA22TNbTtC\nXzl0xcOK5coG5x8IaajEFAtdqQKBgQDNmuPZ+uPvhsHvKVLAseKtvvObZhoJHYq1\ndV9n9nxgkPqhdLMfjAnYbIePGUXDCd2ew7UxQ0z9QODgbxWRPGCeAP21aoMKi1bo\ngPys7T3Z6u1DhpH0iDDLZ5oziJ/UX4Y4R5cLA6yiQsheO3rKqoXrjVZemazoxnT3\nX4IJjpo3uQKBgQCcmyOfzfK9NxXNU8Ud5815JDdWSuko4AIOQAzYSeysuBxtnar4\nvghlgq65z7krfKketYwjA1Fhm4cVQmW7q1dBQK2FAmFIB7R0+heZryVYO5avhFNx\nUKFWkZFP59sknh6etOe4QSFuPBxD1OybaQgXN2OvoeKaiqXjS391ycs/IQKBgQDM\n07aUbP5wnDZN1UQMlep2Hto/gOsFE7og5ipCvurPpP8ao9Di57bTNeOiapH2KLjx\nNpUm254yWlTtIZ1Bz/2Myv31ooOjmIbfH8kZWUuZ8hGmiMSU8KxzpuWW21Am2Xc0\nUBWoMmPkTlWgku7UQiciL+7QVZZNW5Ag9LPuY3M9eQKBgB+lzNZFVwGL3EDv8Wuu\nMwIFSVpyiKMuXjiIjeZIK04jpEOI6XLdG9chytzLFt89pliCR3vUA1e9n3c7LHXB\ndnmaUdJUJmukTxa96gV3QCkugma9RVis1ClgNv0Mm89GOvgULe3U3G/SBFQUtsgb\n1MztYt4qL804lT2L+NesSIDc\n-----END PRIVATE KEY-----\n",
+  "client_email": "inmobiliariagtdos@inmobiliariagt.iam.gserviceaccount.com",
+  "client_id": "109773963483378891574",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/inmobiliariagtdos%40inmobiliariagt.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
