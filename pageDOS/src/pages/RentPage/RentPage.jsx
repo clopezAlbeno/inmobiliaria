@@ -1,83 +1,299 @@
-import React from 'react';
-import { RentPropertyCard } from '../../components/RentPropertyCard/RentPropertyCard.jsx';
-import apartamento1 from '../../assets/apartamento1.png';
-import apartamento2 from '../../assets/apartamento2.png';
-import './RentPage.css';
-
-const dummyRentProperties = [
-    {
-        id: 1,
-        title: 'Casa en Renta en La Cañada zona 14',
-        price: '4,000',
-        currency: 'US$',
-        transactionType: 'EN RENTA',
-        image: apartamento1,
-        bedrooms: 4,
-        bathrooms: 2,
-        area: '400',
-        description: 'Casa en Condominio en Zona 14, Guatemala',
-        advisor: 'Carmen Coloma'
-    },
-    {
-        id: 2,
-        title: 'Bodega en Renta - Complejo Industrial Boca del Monte',
-        price: '30,000',
-        currency: 'US$',
-        transactionType: 'EN RENTA',
-        image: apartamento2,
-        area: '4,020.09',
-        description: 'Bodega en Villa Canales',
-        advisor: 'Carmen Coloma'
-    },
-];
+import { useState, useMemo } from "react";
+import { RentPropertyCard } from "../../components/RentPropertyCard/RentPropertyCard.jsx";
+import propertiesData from "../../data/properties.json";
+import "./RentPage.css";
 
 export const RentPage = () => {
-    return (
-        <div className="rent-page-container">
-            <div className="rent-page-header">
-                <h1>Propiedades en renta</h1>
+  const rentPropertiesData = propertiesData.filter(property => 
+    property.transactionType === "EN RENTA"
+  );
+
+  const [filters, setFilters] = useState({
+    location: "",
+    propertyType: "",
+    minPrice: "",
+    maxPrice: "",
+    bedrooms: "",
+    bathrooms: "",
+    minArea: "",
+    maxArea: ""
+  });
+
+  const [sortBy, setSortBy] = useState("newest");
+  const [currentPage, setCurrentPage] = useState(1);
+  const propertiesPerPage = 10;
+
+  const updateFilter = (filterName, value) => {
+    setFilters((prev) => ({
+      ...prev,
+      [filterName]: value
+    }));
+    setCurrentPage(1);
+  };
+
+  // Limpiar filtros
+  const clearFilters = () => {
+    setFilters({
+      location: "",
+      propertyType: "",
+      minPrice: "",
+      maxPrice: "",
+      bedrooms: "",
+      bathrooms: "",
+      minArea: "",
+      maxArea: ""
+    });
+    setCurrentPage(1);
+  };
+
+  // Opciones únicas (solo de propiedades en renta)
+  const uniqueLocations = [...new Set(rentPropertiesData.map((prop) => prop.location))];
+  const uniquePropertyTypes = [...new Set(rentPropertiesData.map((prop) => prop.propertyType))];
+
+  // Filtrar y ordenar
+  const filteredProperties = useMemo(() => {
+    let filtered = rentPropertiesData.filter((property) => {
+      if (filters.location && property.location !== filters.location) return false;
+      if (filters.propertyType && property.propertyType !== filters.propertyType) return false;
+      if (filters.minPrice && property.price < parseInt(filters.minPrice)) return false;
+      if (filters.maxPrice && property.price > parseInt(filters.maxPrice)) return false;
+      if (filters.bedrooms && property.bedrooms < parseInt(filters.bedrooms)) return false;
+      if (filters.bathrooms && property.bathrooms < parseInt(filters.bathrooms)) return false;
+      if (filters.minArea && property.area < parseFloat(filters.minArea)) return false;
+      if (filters.maxArea && property.area > parseFloat(filters.maxArea)) return false;
+      return true;
+    });
+
+    filtered.sort((a, b) => {
+      switch (sortBy) {
+        case "price-low":
+          return a.price - b.price;
+        case "price-high":
+          return b.price - a.price;
+        case "area-large":
+          return b.area - a.area;
+        case "area-small":
+          return a.area - b.area;
+        case "newest":
+        default:
+          return new Date(b.publishDate) - new Date(a.publishDate);
+      }
+    });
+
+    return filtered;
+  }, [filters, sortBy, rentPropertiesData]);
+
+  // Paginación
+  const indexOfLast = currentPage * propertiesPerPage;
+  const indexOfFirst = indexOfLast - propertiesPerPage;
+  const currentProperties = filteredProperties.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(filteredProperties.length / propertiesPerPage);
+
+  return (
+    <div className="rent-page-container">
+      <div className="rent-page-header">
+        <h1>Propiedades en renta</h1>
+        <p>Encuentra la propiedad perfecta para ti</p>
+      </div>
+      <div className="rent-page-content">
+        {/* Filtros */}
+        <aside className="filters-sidebar">
+          <div className="filters-header">
+            <h2>Filtros</h2>
+            <button className="clear-filters-btn" onClick={clearFilters}>
+              Limpiar filtros
+            </button>
+          </div>
+
+          <div className="filter-section">
+            <h4>Ubicación</h4>
+            <select
+              value={filters.location}
+              onChange={(e) => updateFilter("location", e.target.value)}
+              className="filter-select"
+            >
+              <option value="">Todas</option>
+              {uniqueLocations.map((location) => (
+                <option key={location} value={location}>
+                  {location}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-section">
+            <h4>Tipo de propiedad</h4>
+            <select
+              value={filters.propertyType}
+              onChange={(e) => updateFilter("propertyType", e.target.value)}
+              className="filter-select"
+            >
+              <option value="">Todas</option>
+              {uniquePropertyTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-section">
+            <h4>Precio (US$)</h4>
+            <div className="price-inputs">
+              <input
+                type="number"
+                placeholder="Mínimo"
+                value={filters.minPrice}
+                onChange={(e) => updateFilter("minPrice", e.target.value)}
+                className="filter-input"
+              />
+              <input
+                type="number"
+                placeholder="Máximo"
+                value={filters.maxPrice}
+                onChange={(e) => updateFilter("maxPrice", e.target.value)}
+                className="filter-input"
+              />
             </div>
-            <div className="rent-page-content">
-                <aside className="filters-sidebar">
-                    <h2>Filtros</h2>
-                    <div className="filter-section">
-                        <h4>Ubicación</h4>
-                        {/* aquii agregar un input o un dropdown */}
-                    </div>
-                    <div className="filter-section">
-                        <h4>Tipo de propiedad</h4>
-                    </div>
-                    <div className="filter-section">
-                        <h4>Renta</h4>
-                    </div>
-                    <div className="filter-section">
-                        <h4>Dormitorios</h4>
-                    </div>
-                    <div className="filter-section">
-                        <h4>Baños</h4>
-                    </div>
-                    <div className="filter-section">
-                        <h4>Superficie total</h4>
-                    </div>
-                    <div className="filter-section">
-                        <h4>Terreno</h4>
-                    </div>
-                </aside>
-                <main className="properties-list">
-                    <div className="sort-bar">
-                        <span>Últimos publicados</span>
-                        <select>
-                            <option>Ordenar por...</option>
-                        </select>
-                    </div>
-                    {dummyRentProperties.map((property) => (
-                        <RentPropertyCard
-                            key={property.id}
-                            {...property}
-                        />
-                    ))}
-                </main>
+          </div>
+
+          <div className="filter-section">
+            <h4>Dormitorios</h4>
+            <select
+              value={filters.bedrooms}
+              onChange={(e) => updateFilter("bedrooms", e.target.value)}
+              className="filter-select"
+            >
+              <option value="">Cualquier cantidad</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
+              <option value="5">5+</option>
+            </select>
+          </div>
+
+          <div className="filter-section">
+            <h4>Baños</h4>
+            <select
+              value={filters.bathrooms}
+              onChange={(e) => updateFilter("bathrooms", e.target.value)}
+              className="filter-select"
+            >
+              <option value="">Cualquier cantidad</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
+            </select>
+          </div>
+
+          <div className="filter-section">
+            <h4>Área (m²)</h4>
+            <div className="area-inputs">
+              <input
+                type="number"
+                placeholder="Mínimo"
+                value={filters.minArea}
+                onChange={(e) => updateFilter("minArea", e.target.value)}
+                className="filter-input"
+              />
+              <input
+                type="number"
+                placeholder="Máximo"
+                value={filters.maxArea}
+                onChange={(e) => updateFilter("maxArea", e.target.value)}
+                className="filter-input"
+              />
             </div>
-        </div>
-    );
+          </div>
+        </aside>
+
+        <main className="properties-list">
+          <div className="sort-bar">
+            <span>{filteredProperties.length} propiedades en renta encontradas</span>
+            <div className="sort-controls">
+              <span>Ordenar por:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="sort-select"
+              >
+                <option value="newest">Más recientes</option>
+                <option value="price-low">Precio: menor a mayor</option>
+                <option value="price-high">Precio: mayor a menor</option>
+                <option value="area-large">Área: mayor a menor</option>
+                <option value="area-small">Área: menor a mayor</option>
+              </select>
+            </div>
+          </div>
+
+          {currentProperties.length > 0 ? (
+            <div className="properties-grid">
+              {currentProperties.map((property) => (
+                <RentPropertyCard
+                  key={property.id}
+                  {...property}
+                  price={property.price.toLocaleString()}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="no-results">
+              <h3>No se encontraron propiedades en renta</h3>
+              <p>Intenta ajustar los filtros para ver más resultados</p>
+              <button className="clear-filters-btn" onClick={clearFilters}>
+                Limpiar filtros
+              </button>
+            </div>
+          )}
+
+          {totalPages > 1 && (
+            <div className="pagination">
+              <button 
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="pagination-btn"
+              >
+                &laquo; Anterior
+              </button>
+              
+              {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+                let pageNum;
+                if (totalPages <= 5) {
+                  pageNum = i + 1;
+                } else if (currentPage <= 3) {
+                  pageNum = i + 1;
+                } else if (currentPage >= totalPages - 2) {
+                  pageNum = totalPages - 4 + i;
+                } else {
+                  pageNum = currentPage - 2 + i;
+                }
+                
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={currentPage === pageNum ? "pagination-btn active" : "pagination-btn"}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+              
+              {totalPages > 5 && <span className="pagination-ellipsis">...</span>}
+              
+              <button 
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="pagination-btn"
+              >
+                Siguiente &raquo;
+              </button>
+            </div>
+          )}
+        </main>
+      </div>
+    </div>
+  );
 };

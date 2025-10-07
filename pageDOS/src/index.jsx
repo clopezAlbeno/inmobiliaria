@@ -4,6 +4,7 @@ import App from "./App.jsx"
 import { NotFoundPage } from "./NotFoundPage.jsx";
 import { Dashboard } from "./pages/Dashboard/Dashboard.jsx";
 import { RentPage } from "./pages/RentPage/RentPage.jsx"; 
+import { PropertyDetail } from "./pages/PropertyDetail/PropertyDetail.jsx";
 
 export const AuthContext = createContext();
 
@@ -22,6 +23,10 @@ export const Index = () => {
         {
           path: "/rentas",
           element: <RentPage />
+        },
+        {
+          path: "/property/:id",
+          element: <PropertyDetail />
         }
       ]
     }]);
