@@ -1,0 +1,345 @@
+.sales-page-container {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    flex-direction: column;
+    /* Para evitar que el contenido quede debajo del navbar fijo */
+}
+
+.sales-page-header {
+    background-color: #e6f1f5;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.sales-page-header h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #546674;
+    margin: 0;
+}
+
+.sales-page-content {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    justify-content: center;
+    width: 80%;
+}
+
+.filters-sidebar {
+    flex: 0 0 280px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.filters-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.clear-filters-btn {
+    background: none;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.clear-filters-btn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.filter-section {
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.filter-section h4 {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.filter-select,
+.filter-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: white;
+    color: #333;
+    transition: border-color 0.2s ease;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.price-inputs,
+.area-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+.price-inputs .filter-input,
+.area-inputs .filter-input {
+    flex: 1;
+}
+
+.properties-list {
+    flex-grow: 1;
+}
+
+.sort-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.sort-bar span {
+    color: #666;
+    font-weight: 500;
+}
+
+.sort-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.9rem;
+    min-width: 180px;
+}
+
+.properties-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    color: #666;
+}
+
+.no-results h3 {
+    color: #444;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.no-results p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.no-results .clear-filters-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+}
+
+.no-results .clear-filters-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .sales-page-content {
+        flex-direction: column;
+        width: 95%;
+        padding: 16px;
+    }
+    
+    .filters-sidebar {
+        flex: none;
+        order: 2;
+        margin-top: 20px;
+    }
+    
+    .properties-list {
+        order: 1;
+    }
+    
+    .sort-bar {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .sort-select {
+        min-width: auto;
+    }
+    
+    .filters-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .price-inputs,
+    .area-inputs {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Efectos de hover para mejorar UX */
+.filter-select:hover,
+.filter-input:hover {
+    border-color: #007bff;
+}
+
+/* Estilos para inputs con valores */
+.filter-select:valid,
+.filter-input:valid {
+    border-color: #28a745;
+}
+
+/* Loading state para futuras implementaciones */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Animaciones suaves */
+.properties-grid {
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Estilos de paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #f0f0f0;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-btn.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-ellipsis {
+  padding: 8px 4px;
+  color: #666;
+}
+
+/* Mejoras al sort bar */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-bar span {
+  color: #666;
+  font-weight: 500;
+}
+
+/* Mejora responsive para paginación */
+@media (max-width: 768px) {
+  .pagination {
+    gap: 4px;
+  }
+  
+  .pagination-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .sort-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* Mejora visual para los inputs de filtro */
+.filter-input::placeholder {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Mejora visual para el header */
+.sales-page-header p {
+  color: #666;
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

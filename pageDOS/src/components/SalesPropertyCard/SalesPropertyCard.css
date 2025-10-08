@@ -1,0 +1,143 @@
+.sales-property-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.sales-property-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sales-property-image {
+    flex: 0 0 350px;
+    /* Ancho fijo para la imagen */
+    height: 200px;
+    /* Altura de la imagen */
+    overflow: hidden;
+}
+
+.sales-property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sales-property-info {
+    flex-grow: 1;
+    padding: 16px;
+    position: relative;
+}
+
+.sales-property-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.sales-property-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.sales-transaction-type {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-left: auto;
+}
+
+.venta {
+    background-color: #fff0f0;
+    color: #dc2626;
+}
+
+.renta {
+    background-color: #f0fdf4;
+    color: #22c55e;
+}
+
+.sales-property-description {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.sales-property-details {
+    display: flex;
+    gap: 16px;
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.detail-item-sales {
+    display: flex;
+    align-items: center;
+}
+
+.sales-property-advisor {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+.sales-detail-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.sales-detail-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design para SalesPropertyCard */
+@media (max-width: 768px) {
+    .sales-property-card {
+        flex-direction: column;
+    }
+    
+    .sales-property-image {
+        flex: none;
+        width: 100%;
+        height: 200px;
+    }
+    
+    .sales-property-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .sales-transaction-type {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+    
+    .sales-property-details {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
